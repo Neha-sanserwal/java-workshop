@@ -18,6 +18,11 @@ class Person {
   public boolean canBuyADrink() {
     return isOlderThanOrEqual(21);
   }
+
+  @Override
+  public String toString() {
+    return "Person : name : " + this.name + ", age : " + this.age;
+  } //use override to avoid the mistake in method name or parameters
 }
 
 public class Main {
@@ -60,7 +65,7 @@ public class Main {
     System.out.println("mamu : " + mamu.toString());
     System.out.println("Chotu : " + chotu.toString());
     System.out.println("ChotuCopy : " + chotuCopy.toString());
-    //to String has same output as print the reference : By default when printing the object toString() is called. It inherit from Somewhere.
+    //to String has same output as printing of the references : By default when printing the object, toString() is called. It is inherited from Somewhere.
 
     System.out.println("--------------------------------------------------");
 
