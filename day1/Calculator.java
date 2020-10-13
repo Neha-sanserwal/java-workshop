@@ -23,6 +23,7 @@ public class Calculator {
 		switch (choice) {
 			case 1:
 				System.out.println("The result is: " + add(num1, num2));
+				System.out.println();
 				break;
 			case 2: 
 				System.out.println("The result is: " + multiply(num1, num2));
