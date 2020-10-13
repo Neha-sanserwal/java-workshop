@@ -11,5 +11,8 @@ class Person {
 
 public class Main {
 
-  public static void main(String[] args) {}
+  public static void main(String[] args) {
+    Person person = new Person("Harry", 20);
+    System.out.println(person);
+  }
 }
