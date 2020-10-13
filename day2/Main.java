@@ -60,7 +60,15 @@ public class Main {
     System.out.println("mamu : " + mamu.toString());
     System.out.println("Chotu : " + chotu.toString());
     System.out.println("ChotuCopy : " + chotuCopy.toString());
-    //to String has same output as print the reference : By default when printing the object toString() is called. It inherit from Somewhere
+    //to String has same output as print the reference : By default when printing the object toString() is called. It inherit from Somewhere.
+
+    System.out.println("--------------------------------------------------");
+
+    // Everything in java is object
+    Object someObject = new Object();
+    System.out.println(someObject);
+    System.out.println(someObject.toString());
+    // to String in every class is inherited from object class. It is suggested to be overridden.
 
     System.out.println("--------------------------------------------------");
   }
