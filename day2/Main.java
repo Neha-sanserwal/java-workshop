@@ -7,19 +7,25 @@ class Person {
     this.age = age;
   }
 
-  public boolean isEligibleForVote() {
+  public boolean isEligibleToVote() {
     return this.age >= 18;
+  }
+
+  public boolean canBuyADrink() {
+    return this.age >= 21;
   }
 }
 
 public class Main {
 
   public static void main(String[] args) {
-    Person person = new Person(args[0], Integer.parseInt(args[1]));
-    if (person.isEligibleForVote()) {
-      System.out.println("Person can vote");
-    } else {
-      System.out.println("Person cannot vote");
-    }
+    Person uncle = new Person("Raju", 40);
+    Person chotu = new Person("Chotu", 12);
+
+    System.out.println("uncle can vote : " + uncle.isEligibleToVote());
+    System.out.println("uncle can buy a drink : " + uncle.canBuyADrink());
+
+    System.out.println("chotu can vote : " + chotu.isEligibleToVote());
+    System.out.println("chotu can buy a drink : " + chotu.canBuyADrink());
   }
 }
