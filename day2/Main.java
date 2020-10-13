@@ -7,12 +7,16 @@ class Person {
     this.age = age;
   }
 
+  private boolean isOlderThanOrEqual(int ageLimit) {
+    return this.age >= ageLimit;
+  }
+
   public boolean isEligibleToVote() {
-    return this.age >= 18;
+    return isOlderThanOrEqual(18);
   }
 
   public boolean canBuyADrink() {
-    return this.age >= 21;
+    return isOlderThanOrEqual(21);
   }
 }
 
