@@ -2,6 +2,11 @@ class Person {
   private String name;
   private int age;
 
+  Person() {
+    this.name = "baby";
+    this.age = 0;
+  }
+
   Person(String name, int age) {
     this.name = name;
     this.age = age;
@@ -46,6 +51,7 @@ public class Main {
     Person uncle = new Person("Raju", 40);
     Person mamu = new Person("Raju", 40);
     Person chotu = new Person("Chotu", 12);
+    Person baby = new Person();
     Person chotuCopy = chotu;
 
     System.out.println("uncle can vote : " + uncle.isEligibleToVote());
@@ -100,5 +106,7 @@ public class Main {
     //equals gives true if Object is equal to the obj in argument. Can be overridden.
 
     System.out.println("--------------------------------------------------");
+
+    System.out.println(baby.toString());
   }
 }
