@@ -26,7 +26,14 @@ class Person {
 
   @Override
   public boolean equals(Object other) {
+    if (!(other instanceof Person)) {
+      return false;
+    }
     if (other == this) {
+      return true;
+    }
+    Person otherPerson = (Person) other;
+    if (this.age == otherPerson.age && this.name == otherPerson.name) {
       return true;
     }
     return false;
@@ -88,7 +95,8 @@ public class Main {
     System.out.println("mamu equals to uncle :" + mamu.equals(uncle));
     System.out.println("mamu equals to chotu :" + mamu.equals(chotu));
     System.out.println("mamu equals to  mamu :" + mamu.equals(mamu));
-    System.out.println("mamu equals to chotu :" + mamu.equals(2));
+    System.out.println("mamu equals to 2 :" + mamu.equals(2));
+
     //equals gives true if Object is equal to the obj in argument. Can be overridden.
 
     System.out.println("--------------------------------------------------");
