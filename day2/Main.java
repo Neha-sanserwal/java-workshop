@@ -23,6 +23,14 @@ class Person {
   public String toString() {
     return "Person : name : " + this.name + ", age : " + this.age;
   } //use override to avoid the mistake in method name or parameters
+
+  @Override
+  public boolean equals(Object other) {
+    if (other == this) {
+      return true;
+    }
+    return false;
+  }
 }
 
 public class Main {
@@ -74,6 +82,14 @@ public class Main {
     System.out.println(someObject);
     System.out.println(someObject.toString());
     // to String in every class is inherited from object class. It is suggested to be overridden.
+
+    System.out.println("--------------------------------------------------");
+    //Object.equals
+    System.out.println("mamu equals to uncle :" + mamu.equals(uncle));
+    System.out.println("mamu equals to chotu :" + mamu.equals(chotu));
+    System.out.println("mamu equals to  mamu :" + mamu.equals(mamu));
+    System.out.println("mamu equals to chotu :" + mamu.equals(2));
+    //equals gives true if Object is equal to the obj in argument. Can be overridden.
 
     System.out.println("--------------------------------------------------");
   }
