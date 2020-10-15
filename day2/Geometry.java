@@ -11,6 +11,11 @@ class Point {
     this.x = x;
     this.y = y;
   }
+
+  @Override
+  public String toString() {
+    return String.format("Point@ { x: " + this.x + ", y: " + this.y + " }");
+  }
 }
 
 public class Geometry {
@@ -18,7 +23,7 @@ public class Geometry {
   public static void main(String[] args) {
     Point pointAtZero = new Point();
     Point nonZeroPoint = new Point(2, 4);
-    System.out.println("Point at zero :" + pointAtZero);
+    System.out.println("Point at zero :" + pointAtZero.toString());
     System.out.println("Non-zero point :" + nonZeroPoint);
   }
 }
