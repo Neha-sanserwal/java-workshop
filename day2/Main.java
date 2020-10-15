@@ -43,6 +43,15 @@ class Person {
     }
     return false;
   }
+
+  @Override
+  public int hashCode() {
+    int hashNum = 13;
+    int hash = hashNum;
+    hash = hash + (hashNum * ((Integer) this.age).hashCode());
+    hash = hash + (hashNum * this.name.hashCode());
+    return hash;
+  }
 }
 
 public class Main {
@@ -108,5 +117,13 @@ public class Main {
     System.out.println("--------------------------------------------------");
 
     System.out.println(baby.toString());
+
+    System.out.println("--------------------------------------------------");
+
+    //hashcode
+    System.out.println("Uncle hashcode : " + uncle.hashCode());
+    System.out.println("mamu hashcode : " + mamu.hashCode());
+    System.out.println("Chotu hashcode : " + chotu.hashCode());
+    System.out.println("ChotuCopy hashcode : " + chotuCopy.hashCode());
   }
 }
