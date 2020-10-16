@@ -8,13 +8,13 @@ public class Arrays {
     return -1;
   }
 
-	public static cloneArray(int[] values){
-		int[] clone = new int[values.length];
-		for (int index = 0; index < values.length; index++) {
-				clone[index] = values[index];
-		}
-		return clone;
-	}
+  public static int[] cloneArray(int[] values) {
+    int[] clone = new int[values.length];
+    for (int index = 0; index < values.length; index++) {
+      clone[index] = values[index];
+    }
+    return clone;
+  }
 
   public static float average(int[] numbers) {
     int sum = 0;
@@ -25,17 +25,18 @@ public class Arrays {
     return sum / numbers.length;
   }
 
-  public static void sort(int[] numbers) {
-		int[] numbersCopy = cloneArray(numbers);
+  public static int[] sort(int[] numbers) {
+    int[] numbersCopy = cloneArray(numbers);
     for (int numIdx = 1; numIdx < numbersCopy.length; numIdx++) {
       for (int prevIdx = 0; prevIdx < numIdx; prevIdx++) {
         if (numbersCopy[prevIdx] > numbersCopy[numIdx]) {
-          numbersCopy[prevIdx] = numberCopy[prevIdx] + numbersCopy[numIdx]; 
-					numberCopy[numIdx] = numbersCopy[prevIdx] - numberCopy[numIdx]; 
-          numbersCopy[prevIdx] =  numbersCopy[prevIdx] - numberCopy[numIdx]
+          numbersCopy[prevIdx] = numbersCopy[prevIdx] + numbersCopy[numIdx];
+          numbersCopy[numIdx] = numbersCopy[prevIdx] - numbersCopy[numIdx];
+          numbersCopy[prevIdx] = numbersCopy[prevIdx] - numbersCopy[numIdx];
         }
       }
     }
+    return numbersCopy;
   }
 
   public static boolean deepEqual(int[] numbers1, int[] numbers2) {
@@ -71,9 +72,10 @@ public class Arrays {
     System.out.println("--------------------------------");
 
     for (int number : numbers) {
-      System.out.println(number);
+      System.out.print(number);
+      System.out.print(' ');
     }
-
+    System.out.println();
     System.out.println("--------------------------------");
   }
 
@@ -82,7 +84,7 @@ public class Arrays {
     int[] numbers2 = { 4, 5, 6 };
     int[] unsortedArray1 = { 3, 2, 1 };
     int[] sortedArray = { 1, 2, 3 };
-    int[] unsortedArray2 = { 1, 3, 2 };
+    int[] unsortedArray2 = { 5, 6, 3, 2 };
     int[] palindrome = { 1, 2, 1 };
     int[] nonPalindrome = { 1, 2, 3, 4 };
     int[] flatArray = { 1, 2, 3, 4, 5, 6 };
@@ -96,8 +98,8 @@ public class Arrays {
     System.out.println(average(numbers1));
     System.out.println(average(numbers2));
     System.out.println(average(null));
-		
-		//sort
+
+    //sort
     printArray(sort(unsortedArray1));
     printArray(sort(unsortedArray2));
     printArray(sort(sortedArray));
@@ -112,7 +114,5 @@ public class Arrays {
     for (int[] row : pair(flatArray)) {
       printArray(row);
     }
-    String a = null;
-    System.out.println(a.toString());
   }
 }
