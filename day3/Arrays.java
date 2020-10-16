@@ -8,6 +8,29 @@ public class Arrays {
     return -1;
   }
 
+  public static int isElementPresent(int[][] numbers, int numberToFind) {
+    if (numbers == null) return -1;
+    for (int row = 0; row < numbers.length; row++) {
+      for (int cell = 0; cell < numbers[row].length; cell++) {
+        if (numbers[row][cell] == numberToFind) {
+          return (row + 1) * (cell + 1);
+        }
+      }
+    }
+    return -1;
+  }
+
+  public static int[][] cloneArray(int[][] values) {
+    int[][] clone = new int[values.length][];
+    for (int row = 0; row < values.length; row++) {
+      clone[row] = new int[values[row].length];
+      for (int cell = 0; cell < values[row].length; cell++) {
+        clone[row][cell] = values[row][cell];
+      }
+    }
+    return clone;
+  }
+
   public static int[] cloneArray(int[] values) {
     int[] clone = new int[values.length];
     for (int index = 0; index < values.length; index++) {
@@ -83,16 +106,21 @@ public class Arrays {
     int[] numbers1 = { 1, 2, 3 };
     int[] numbers2 = { 4, 5, 6 };
     int[] unsortedArray1 = { 3, 2, 1 };
-    int[] sortedArray = { 1, 2, 3 };
     int[] unsortedArray2 = { 5, 6, 3, 2 };
     int[] palindrome = { 1, 2, 1 };
     int[] nonPalindrome = { 1, 2, 3, 4 };
     int[] flatArray = { 1, 2, 3, 4, 5, 6 };
 
+    int[][] twoDArray = { { 1, 2 }, { 3, 4 }, { 5, 6 } };
+
     //If element present
-    System.out.println(isElementPresent(numbers1, 1));
+    System.out.println(isElementPresent(numbers1, 2));
     System.out.println(isElementPresent(numbers2, 1));
-    System.out.println(isElementPresent(null, 1));
+    // System.out.println(isElementPresent(null, 1)); // ambiguous reference to method;
+
+    System.out.println(isElementPresent(twoDArray, 5));
+    System.out.println(isElementPresent(twoDArray, 4));
+    System.out.println(isElementPresent(twoDArray, 10));
 
     // Average
     System.out.println(average(numbers1));
@@ -102,12 +130,11 @@ public class Arrays {
     //sort
     printArray(sort(unsortedArray1));
     printArray(sort(unsortedArray2));
-    printArray(sort(sortedArray));
+    printArray(sort(numbers1));
 
     System.out.println(deepEqual(numbers1, numbers2));
     System.out.println(deepEqual(numbers2, numbers2));
     System.out.println(deepEqual(numbers1, null));
-    System.out.println(deepEqual(numbers1, sortedArray));
 
     System.out.println("is Palindrome " + isPalindrome(palindrome));
     System.out.println("is Palindrome " + isPalindrome(nonPalindrome));

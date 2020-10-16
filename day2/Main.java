@@ -1,13 +1,16 @@
 class Person {
   private String name;
   private int age;
+  final int a;
 
   Person() {
+    this.a = 2;
     this.name = "baby";
     this.age = 0;
   }
 
   Person(String name, int age) {
+    this.a = 3;
     this.name = name;
     this.age = age;
   }
@@ -125,5 +128,7 @@ public class Main {
     System.out.println("mamu hashcode : " + mamu.hashCode());
     System.out.println("Chotu hashcode : " + chotu.hashCode());
     System.out.println("ChotuCopy hashcode : " + chotuCopy.hashCode());
+    Person a = null;
+    System.out.println(null);
   }
 }
