@@ -20,6 +20,14 @@ public class Arrays {
     return -1;
   }
 
+  public static int isElementPresent(int[][] numbers, int[] arr) {
+    if (numbers == null) return -1;
+    for (int row = 0; row < numbers.length; row++) {
+      if (deepEqual(numbers[row], arr)) return row;
+    }
+    return -1;
+  }
+
   public static int[][] cloneArray(int[][] values) {
     int[][] clone = new int[values.length][];
     for (int row = 0; row < values.length; row++) {
@@ -112,7 +120,8 @@ public class Arrays {
     int[] flatArray = { 1, 2, 3, 4, 5, 6 };
 
     int[][] twoDArray = { { 1, 2 }, { 3, 4 }, { 5, 6 } };
-
+    int[] subArr1 = { 5, 6 };
+    int[] subArr2 = { 4, 3 };
     //If element present
     System.out.println(isElementPresent(numbers1, 2));
     System.out.println(isElementPresent(numbers2, 1));
@@ -121,6 +130,7 @@ public class Arrays {
     System.out.println(isElementPresent(twoDArray, 5));
     System.out.println(isElementPresent(twoDArray, 4));
     System.out.println(isElementPresent(twoDArray, 10));
+    System.out.println(isElementPresent(twoDArray, subArr1));
 
     // Average
     System.out.println(average(numbers1));
