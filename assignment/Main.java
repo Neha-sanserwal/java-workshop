@@ -1,6 +1,6 @@
-public class Main {
+class Matrix {
 
-  public static void printMatrix(int[][] matrix) {
+  public static void print(int[][] matrix) {
     for (int row = 0; row < matrix.length; row++) {
       for (int cell = 0; cell < matrix.length; cell++) {
         System.out.print(matrix[row][cell]);
@@ -10,7 +10,7 @@ public class Main {
     }
   }
 
-  public static int[][] addMatrix(int[][] matrixA, int[][] matrixB) {
+  public static int[][] add(int[][] matrixA, int[][] matrixB) {
     int length = matrixA.length;
     int[][] matrixC = new int[length][length];
     for (int row = 0; row < length; row++) {
@@ -21,7 +21,7 @@ public class Main {
     return matrixC;
   }
 
-  public static int[][] subtractMatrix(int[][] matrixA, int[][] matrixB) {
+  public static int[][] subtract(int[][] matrixA, int[][] matrixB) {
     int length = matrixA.length;
     int[][] matrixC = new int[length][length];
     for (int row = 0; row < length; row++) {
@@ -32,7 +32,7 @@ public class Main {
     return matrixC;
   }
 
-  public static int[][] multiplyMatrix(int[][] matrixA, int[][] matrixB) {
+  public static int[][] multiply(int[][] matrixA, int[][] matrixB) {
     int length = matrixA.length;
     int[][] matrixC = new int[length][length];
     for (int row = 0; row < length; row++) {
@@ -42,34 +42,27 @@ public class Main {
     }
     return matrixC;
   }
+}
 
-  public static int determinant(int[][] matrix, int startRow, int startCol) {
-    if (matrix.length == 1) {
-      return matrix[startRow][startCol];
-    }
-    return 0;
-  }
+public class Main {
 
   public static void main(String[] args) {
     int[][] matrix1 = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
     int[][] matrix2 = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
-    //  printMatrix(matrix1);
-    //  System.out.println("---------------------------------");
-    //  printMatrix(matrix2);
-    //  System.out.println("---------------------------------");
-    //  int[][] resultantMatrix = addMatrix(matrix1, matrix2);
-    //  printMatrix(resultantMatrix);
-    //  System.out.println("---------------------------------");
+    Matrix.print(matrix1);
+    System.out.println("---------------------------------");
+    Matrix.print(matrix2);
+    System.out.println("---------------------------------");
+    int[][] resultantMatrix = Matrix.add(matrix1, matrix2);
+    Matrix.print(resultantMatrix);
+    System.out.println("---------------------------------");
 
-    //  resultantMatrix = multiplyMatrix(matrix1, matrix2);
-    //  printMatrix(resultantMatrix);
-    //  System.out.println("---------------------------------");
+    resultantMatrix = Matrix.multiply(matrix1, matrix2);
+    Matrix.print(resultantMatrix);
+    System.out.println("---------------------------------");
 
-    //  resultantMatrix = subtractMatrix(matrix1, matrix2);
-    //  printMatrix(resultantMatrix);
-    //  System.out.println("---------------------------------");
-    int[][] matrixA = { { 1 } };
-    System.out.println(determinant(matrix1, 0, 0));
+    resultantMatrix = Matrix.subtract(matrix1, matrix2);
+    Matrix.print(resultantMatrix);
     System.out.println("---------------------------------");
   }
 }
