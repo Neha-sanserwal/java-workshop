@@ -64,5 +64,6 @@ public class Main {
     resultantMatrix = Matrix.subtract(matrix1, matrix2);
     Matrix.print(resultantMatrix);
     System.out.println("---------------------------------");
+    // System.out.println(Matrix.determinant(matrix1, 0, 0));
   }
 }
