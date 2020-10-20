@@ -73,6 +73,18 @@ class Matrix {
     }
     return result;
   }
+
+  public int getDeterminant() {
+    if (this.noOfRows == 1 && noOfColumns == 1) {
+      return this.values[0][0];
+    }
+    if (this.noOfRows == 2 && noOfColumns == 2) {
+      int product1 = this.values[0][0] * this.values[1][1];
+      int product2 = this.values[0][1] * this.values[1][0];
+      return product1 - product2;
+    }
+    return 0;
+  }
 }
 
 public class Main {
@@ -110,9 +122,26 @@ public class Main {
     return matrixC.multiply(matrixD);
   }
 
+  public static void calculateDeterminant() {
+    int[][] valuesA = { { 5 } };
+    Matrix matrixA = Matrix.create(valuesA);
+    System.out.println(
+      "Determinant for 1 * 1 matrix with one element : " +
+      matrixA.getDeterminant()
+    );
+
+    int[][] valuesB = { { 1, 2 }, { 3, 4 } };
+
+    Matrix matrixB = Matrix.create(valuesB);
+    System.out.println(
+      "Determinant for 2 * 2 matrix : " + matrixB.getDeterminant()
+    );
+  }
+
   public static void main(String[] args) {
-    System.out.println(addMatrix());
-    System.out.println(subtractMatrix());
-    System.out.println(multiplyMatrix());
+    // System.out.println(addMatrix());
+    // System.out.println(subtractMatrix());
+    // System.out.println(multiplyMatrix());
+    calculateDeterminant();
   }
 }
