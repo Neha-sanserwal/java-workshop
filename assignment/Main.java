@@ -19,18 +19,9 @@ class Matrix {
     return matrix;
   }
 
-  public static void print(int[][] matrix) {
-    for (int row = 0; row < matrix.length; row++) {
-      for (int cell = 0; cell < matrix.length; cell++) {
-        System.out.print(matrix[row][cell]);
-        System.out.print(" ");
-      }
-      System.out.println(" ");
-    }
-  }
-
   public String toString() {
     StringBuilder stringBuilder = new StringBuilder();
+    stringBuilder.append("Matrix:\n");
     for (int[] row : this.values) {
       for (int value : row) {
         stringBuilder.append(value).append(" ");
@@ -40,62 +31,88 @@ class Matrix {
     return stringBuilder.toString();
   }
 
-  public static int[][] add(int[][] matrixA, int[][] matrixB) {
-    int length = matrixA.length;
-    int[][] matrixC = new int[length][length];
-    for (int row = 0; row < length; row++) {
-      for (int cell = 0; cell < length; cell++) {
-        matrixC[row][cell] = matrixA[row][cell] + matrixB[row][cell];
+  public Matrix add(Matrix other) {
+    if (
+      this.noOfRows != other.noOfRows && this.noOfColumns != other.noOfColumns
+    ) {
+      return null;
+    }
+    Matrix result = new Matrix(this.noOfRows, this.noOfColumns);
+    for (int rowNo = 0; rowNo < this.noOfRows; rowNo++) {
+      for (int colNo = 0; colNo < this.noOfColumns; colNo++) {
+        int sum = this.values[rowNo][colNo] + other.values[rowNo][colNo];
+        result.values[rowNo][colNo] = sum;
       }
     }
-    return matrixC;
+    return result;
   }
 
-  public static int[][] subtract(int[][] matrixA, int[][] matrixB) {
-    int length = matrixA.length;
-    int[][] matrixC = new int[length][length];
-    for (int row = 0; row < length; row++) {
-      for (int cell = 0; cell < length; cell++) {
-        matrixC[row][cell] = matrixA[row][cell] - matrixB[row][cell];
+  public Matrix subtract(Matrix other) {
+    if (
+      this.noOfRows != other.noOfRows && this.noOfColumns != other.noOfColumns
+    ) {
+      return null;
+    }
+    Matrix result = new Matrix(this.noOfRows, this.noOfColumns);
+    for (int rowNo = 0; rowNo < this.noOfRows; rowNo++) {
+      for (int colNo = 0; colNo < this.noOfColumns; colNo++) {
+        int difference = this.values[rowNo][colNo] - other.values[rowNo][colNo];
+        result.values[rowNo][colNo] = difference;
       }
     }
-    return matrixC;
+    return result;
   }
 
-  public static int[][] multiply(int[][] matrixA, int[][] matrixB) {
-    int length = matrixA.length;
-    int[][] matrixC = new int[length][length];
-    for (int row = 0; row < length; row++) {
-      for (int cell = 0; cell < length; cell++) {
-        matrixC[row][cell] = matrixA[row][cell] * matrixB[cell][row];
+  public Matrix multiply(Matrix other) {
+    Matrix result = new Matrix(this.noOfRows, this.noOfColumns);
+    for (int rowNo = 0; rowNo < this.noOfRows; rowNo++) {
+      for (int colNo = 0; colNo < this.noOfColumns; colNo++) {
+        int product = this.values[rowNo][colNo] * other.values[colNo][rowNo];
+        result.values[rowNo][colNo] = product;
       }
     }
-    return matrixC;
+    return result;
   }
 }
 
 public class Main {
 
+  public static Matrix addMatrix() {
+    int[][] valuesA = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+    int[][] valuesB = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+
+    Matrix matrixB = Matrix.create(valuesA);
+    Matrix matrixA = Matrix.create(valuesB);
+    return matrixA.add(matrixB);
+  }
+
+  public static Matrix subtractMatrix() {
+    int[][] valuesA = { { 7, 8, 9 }, { 4, 5, 6 }, { 1, 2, 3 } };
+    int[][] valuesB = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+
+    Matrix matrixB = Matrix.create(valuesA);
+    Matrix matrixA = Matrix.create(valuesB);
+    return matrixA.subtract(matrixB);
+  }
+
+  public static Matrix multiplyMatrix() {
+    // int[][] valuesA = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+    // int[][] valuesB = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
+
+    // Matrix matrixB = Matrix.create(valuesA);
+    // Matrix matrixA = Matrix.create(valuesB);
+    // return matrixA.multiply(matrixB);
+
+    int[][] valuesC = { { 1, 2, 3 }, { 4, 5, 6 } };
+    int[][] valuesD = { { 1, 2 }, { 3, 4 }, { 5, 6 } };
+    Matrix matrixC = Matrix.create(valuesC);
+    Matrix matrixD = Matrix.create(valuesD);
+    return matrixC.multiply(matrixD);
+  }
+
   public static void main(String[] args) {
-    int[][] matrix1 = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
-    int[][] matrix2 = { { 1, 2, 3 }, { 4, 5, 6 }, { 7, 8, 9 } };
-
-    Matrix matrix = Matrix.create(matrix1);
-    // Matrix.print(matrix1);
-    // System.out.println("---------------------------------");
-    // Matrix.print(matrix2);
-    // System.out.println("---------------------------------");
-    // int[][] resultantMatrix = Matrix.add(matrix1, matrix2);
-    // Matrix.print(resultantMatrix);
-    // System.out.println("---------------------------------");
-
-    // resultantMatrix = Matrix.multiply(matrix1, matrix2);
-    // Matrix.print(resultantMatrix);
-    // System.out.println("---------------------------------");
-
-    // resultantMatrix = Matrix.subtract(matrix1, matrix2);
-    // Matrix.print(resultantMatrix);
-    // System.out.println("---------------------------------");
-    // // System.out.println(Matrix.determinant(matrix1, 0, 0));
+    System.out.println(addMatrix());
+    System.out.println(subtractMatrix());
+    System.out.println(multiplyMatrix());
   }
 }
