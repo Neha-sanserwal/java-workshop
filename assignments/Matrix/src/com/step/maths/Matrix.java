@@ -114,6 +114,7 @@ public class Matrix {
     if (this.noOfRows == 1 && noOfColumns == 1) {
       return this.values[0][0];
     }
+
     if (this.noOfRows == 2 && noOfColumns == 2) {
       int product1 = this.values[0][0] * this.values[1][1];
       int product2 = this.values[0][1] * this.values[1][0];
