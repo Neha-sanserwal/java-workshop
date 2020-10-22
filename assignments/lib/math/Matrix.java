@@ -21,6 +21,7 @@ public class Matrix {
     return matrix;
   }
 
+  @Override
   public String toString() {
     StringBuilder stringBuilder = new StringBuilder();
     stringBuilder.append("Matrix:\n");
@@ -31,6 +32,39 @@ public class Matrix {
       stringBuilder.append("\n");
     }
     return stringBuilder.toString();
+  }
+
+  private boolean deepEqual(int[] numbers1, int[] numbers2) {
+    if (numbers1 == numbers2) return true;
+    if (numbers1 == null || numbers2 == null) return false;
+    if (numbers1.length != numbers2.length) return false;
+    for (int i = 0; i < numbers2.length; i++) {
+      if (numbers1[i] != numbers2[i]) return false;
+    }
+    return true;
+  }
+
+  public boolean areDimensionsEqual(Matrix otherMatrix) {
+    return (
+      this.noOfRows == otherMatrix.noOfRows &&
+      this.noOfColumns == otherMatrix.noOfColumns
+    );
+  }
+
+  @Override
+  public boolean equals(Object other) {
+    if (!(other instanceof Matrix)) {
+      return false;
+    }
+    if (other == this) {
+      return true;
+    }
+    Matrix otherMatrix = (Matrix) other;
+    if (!this.areDimensionsEqual(otherMatrix)) return false;
+    for (int row = 0; row < this.noOfRows; row++) {
+      if (!deepEqual(this.values[row], otherMatrix.values[row])) return false;
+    }
+    return true;
   }
 
   public Matrix add(Matrix other) {
